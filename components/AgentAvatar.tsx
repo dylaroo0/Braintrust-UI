@@ -93,7 +93,12 @@ const AgentAvatar: React.FC<AgentAvatarProps> = ({ agent, onClick, onDoubleClick
         <div className="flex flex-col items-center w-full h-full overflow-hidden">
           <div className="flex-shrink-0 flex flex-col items-center justify-center mb-4">
             <div style={{ color: iconColor }} className="mb-2">
-              {React.cloneElement(agent.avatar, { className: "w-8 h-8" })}
+              {typeof agent.avatar === 'string' 
+                ? <span className="text-2xl">{agent.avatar}</span>
+                : React.isValidElement(agent.avatar)
+                  ? React.cloneElement(agent.avatar, { className: "w-8 h-8" })
+                  : <span className="text-2xl">🤖</span>
+              }
             </div>
             <span className="text-lg font-bold" style={{ color: agent.color }}>{agent.name}</span>
             <span className="text-xs text-gray-400 px-1 text-center">{agent.role}</span>
@@ -125,7 +130,12 @@ const AgentAvatar: React.FC<AgentAvatarProps> = ({ agent, onClick, onDoubleClick
       ) : (
         <>
           <div style={{ color: iconColor }} className="text-gray-400 group-hover:text-[var(--agent-color)] transition-colors duration-300 mb-1">
-            {agent.avatar}
+            {typeof agent.avatar === 'string' 
+              ? <span className="text-2xl">{agent.avatar}</span>
+              : React.isValidElement(agent.avatar)
+                ? agent.avatar
+                : <span className="text-2xl">🤖</span>
+            }
           </div>
           <span className="text-sm font-bold text-gray-200">{agent.name}</span>
           <span className="text-xs text-gray-400 px-1 text-center">{agent.role}</span>

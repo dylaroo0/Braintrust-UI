@@ -1,19 +1,22 @@
 
 import React, { useState, useMemo, useRef, useEffect } from 'react';
 import { AGENTS, INITIAL_TASKS, INITIAL_BRIEF, ORGANIZER_AGENT } from './constants';
+import { OrganizerIcon } from './components/icons';
 import type { Agent, Message, Task } from './types';
 import { getAgentResponse } from './services/geminiService';
 import TaskSidebar from './components/TaskSidebar';
 import ChatFeed from './components/ChatFeed';
 import AgentAvatar from './components/AgentAvatar';
-import AdminAssistant from './components/AdminAssistant';
 import OrganizerPanel from './components/OrganizerPanel';
+import AgentLibraryPanel from './components/AgentLibraryPanel';
 
 import { useMemoryInitialization } from './hooks/useMemoryInitialization';
 import { useMemoryStore } from './stores/memoryStore';
-import { useAgentPositionStore } from './stores/agentPositionStore';
+import { useActiveAgentsStore } from './stores/activeAgentsStore';
 
 const App: React.FC = () => {
+  console.log('🚀 App component starting to render...');
+  
   // Initialize memory store
   useMemoryInitialization();
   
@@ -22,8 +25,8 @@ const App: React.FC = () => {
   const getConversationHistory = useMemoryStore(state => state.getConversationHistory);
   const getCurrentProject = useMemoryStore(state => state.getCurrentProject);
   
-  // Agent position store
-  const { positions, updatePosition, getPosition } = useAgentPositionStore();
+  // Active agents store for position management
+  const { updatePosition, getPosition, addAgent, activeAgents } = useActiveAgentsStore();
   
   const [tasks, setTasks] = useState<Task[]>(INITIAL_TASKS);
   const [brief, setBrief] = useState<string>(INITIAL_BRIEF);
@@ -38,9 +41,10 @@ const App: React.FC = () => {
   const [expandedAgentId, setExpandedAgentId] = useState<string | null>(null);
   const [isOrganizerPanelOpen, setIsOrganizerPanelOpen] = useState<boolean>(false);
   const [isProjectHubOpen, setIsProjectHubOpen] = useState<boolean>(true);
+  const [isAgentLibraryOpen, setIsAgentLibraryOpen] = useState<boolean>(false);
 
-  const allAgents = useMemo(() => [...AGENTS, ORGANIZER_AGENT], []);
-  const circleAgents = AGENTS;
+  const allAgents = useMemo(() => [ORGANIZER_AGENT], []);
+  const circleAgents: Agent[] = []; // No core agents in the circle
 
   const initialWidth = 768;
   const initialHeight = Math.min(window.innerHeight * 0.85, 800);
@@ -61,6 +65,30 @@ const App: React.FC = () => {
     initialWidth: 0,
     initialHeight: 0,
   });
+
+  const getAgentDefaultPosition = (index: number, total: number) => {
+    const angle = (index / total) * 2 * Math.PI - Math.PI / 2; // Start from top
+    const radius = 0.38; // 38% as decimal
+    const centerX = window.innerWidth * 0.625; // Center of the main area
+    const centerY = window.innerHeight * 0.5;
+    const radiusPixels = Math.min(window.innerWidth, window.innerHeight) * radius;
+    
+    const x = centerX + radiusPixels * Math.cos(angle);
+    const y = centerY + radiusPixels * Math.sin(angle);
+    
+    return { x, y };
+  };
+
+  // Initialize agents in the store on first load
+  useEffect(() => {
+    circleAgents.forEach((agent, index) => {
+      const defaultPosition = getAgentDefaultPosition(index, circleAgents.length);
+      addAgent(agent, defaultPosition);
+    });
+    
+    // NOTE: Organizer is rendered separately in fixed position, not added to activeAgents store
+    // This prevents React component serialization issues with localStorage
+  }, []); // Empty dependency array since we only want this to run once on mount
 
   const handleEngageAgent = (agent: Agent) => {
     setActiveAgent(agent);
@@ -126,19 +154,6 @@ const App: React.FC = () => {
     }
   };
 
-  const getAgentDefaultPosition = (index: number, total: number) => {
-    const angle = (index / total) * 2 * Math.PI - Math.PI / 2; // Start from top
-    const radius = 0.38; // 38% as decimal
-    const centerX = window.innerWidth * 0.625; // Center of the main area
-    const centerY = window.innerHeight * 0.5;
-    const radiusPixels = Math.min(window.innerWidth, window.innerHeight) * radius;
-    
-    const x = centerX + radiusPixels * Math.cos(angle);
-    const y = centerY + radiusPixels * Math.sin(angle);
-    
-    return { x, y };
-  };
-
   const getAgentPosition = (agent: Agent, index: number, total: number) => {
     const savedPosition = getPosition(agent.id);
     if (savedPosition) {
@@ -148,6 +163,7 @@ const App: React.FC = () => {
   };
 
   const handleAgentDrag = (agentId: string, x: number, y: number) => {
+    // Update position in store - this will automatically save to localStorage
     updatePosition(agentId, { x, y });
   };
 
@@ -207,8 +223,16 @@ const App: React.FC = () => {
     };
   }, []);
 
-  return (
-    <div className="flex h-screen w-screen bg-gray-900 text-gray-100 overflow-hidden">
+  console.log('📊 App state:', { 
+    isProjectHubOpen, 
+    isAgentLibraryOpen, 
+    activeAgents: activeAgents.length,
+    allAgents: allAgents.length 
+  });
+
+  try {
+    return (
+      <div className="flex h-screen w-screen bg-gray-900 text-gray-100 overflow-hidden">
       {isProjectHubOpen && (
         <TaskSidebar 
           tasks={tasks} 
@@ -229,24 +253,34 @@ const App: React.FC = () => {
           <span className="text-sm font-bold">Project Hub</span>
         </button>
       )}
+
+      {/* Agent Library Toggle Button */}
+      <button
+        onClick={() => setIsAgentLibraryOpen(true)}
+        className="fixed top-4 bg-purple-600 hover:bg-purple-700 text-white p-2 rounded-lg shadow-lg z-40 transition-colors"
+        style={{ 
+          left: isProjectHubOpen ? '350px' : '190px' // Better spacing to avoid overlap
+        }}
+      >
+        <span className="text-sm font-bold">🔍 Agent Library</span>
+      </button>
       
       <main className="flex-1 flex items-center justify-center relative p-4">
         <div className="absolute inset-0 bg-grid-gray-700/[0.2] [mask-image:linear-gradient(to_bottom,white,transparent)]"></div>
         
-        {/* Agent Circle */}
+        {/* Agent Circle - Now shows all active agents except organizer (rendered separately) */}
         <div className="absolute w-full h-full">
-          {circleAgents.map((agent, index) => {
-            const position = getAgentPosition(agent, index, circleAgents.length);
+          {activeAgents.filter(agent => agent.id !== ORGANIZER_AGENT.id).map((agentInCircle, index) => {
             return (
               <AgentAvatar
-                key={agent.id}
-                agent={agent}
+                key={agentInCircle.id}
+                agent={agentInCircle}
                 onClick={handleEngageAgent}
                 onDoubleClick={handleAgentDoubleClick}
-                isActive={activeAgent?.id === agent.id}
-                isExpanded={expandedAgentId === agent.id}
-                tasks={tasks.filter(t => t.assigneeId === agent.id)}
-                position={position}
+                isActive={activeAgent?.id === agentInCircle.id}
+                isExpanded={expandedAgentId === agentInCircle.id}
+                tasks={tasks.filter(t => t.assigneeId === agentInCircle.id)}
+                position={agentInCircle.position}
                 onDrag={handleAgentDrag}
                 style={{
                   transform: 'translate(-50%, -50%)',
@@ -268,13 +302,36 @@ const App: React.FC = () => {
           onResizeMouseDown={handleResizeMouseDown}
         />
 
-        {/* Admin Assistant */}
-        <AdminAssistant 
-          agent={ORGANIZER_AGENT} 
-          onClick={handleEngageAgent} 
-          onDoubleClick={handleAgentDoubleClick}
-          isActive={activeAgent?.id === ORGANIZER_AGENT.id} 
-        />
+        {/* Organizer Agent - Fixed position for now */}
+        <div 
+          className="fixed bottom-8 right-8 z-20"
+          style={{ 
+            width: '80px', 
+            height: '80px',
+          }}
+        >
+          <div
+            onClick={() => handleEngageAgent(ORGANIZER_AGENT)}
+            onDoubleClick={() => handleAgentDoubleClick(ORGANIZER_AGENT)}
+            className={`w-full h-full rounded-full flex items-center justify-center cursor-pointer transition-all duration-200 hover:scale-110 ${
+              activeAgent?.id === ORGANIZER_AGENT.id 
+                ? 'ring-4 ring-purple-400 ring-opacity-60' 
+                : ''
+            }`}
+            style={{ 
+              backgroundColor: ORGANIZER_AGENT.color,
+              boxShadow: '0 4px 12px rgba(0,0,0,0.3)'
+            }}
+          >
+            <div className="text-2xl flex items-center justify-center">
+              <OrganizerIcon />
+            </div>
+          </div>
+          <div className="text-center mt-2">
+            <div className="text-xs font-medium text-white">{ORGANIZER_AGENT.name}</div>
+            <div className="text-xs text-gray-300">{ORGANIZER_AGENT.role}</div>
+          </div>
+        </div>
         
         {/* Organizer Panel */}
         <OrganizerPanel
@@ -286,10 +343,27 @@ const App: React.FC = () => {
             setTasks={setTasks}
         />
 
+        {/* Agent Library Panel */}
+        <AgentLibraryPanel
+            isOpen={isAgentLibraryOpen}
+            onClose={() => setIsAgentLibraryOpen(false)}
+        />
 
       </main>
     </div>
   );
+  } catch (error) {
+    console.error('💥 App render error:', error);
+    return (
+      <div className="flex h-screen w-screen bg-red-900 text-white items-center justify-center">
+        <div className="text-center">
+          <h1 className="text-2xl font-bold mb-4">App Error</h1>
+          <p className="text-red-200">Check console for details</p>
+          <p className="text-sm mt-2 text-red-300">{error.toString()}</p>
+        </div>
+      </div>
+    );
+  }
 };
 
 export default App;

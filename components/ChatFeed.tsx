@@ -74,7 +74,10 @@ const ChatFeed: React.FC<ChatFeedProps> = ({
                 className="w-10 h-10 rounded-full bg-gray-700/50 flex items-center justify-center flex-shrink-0 border-2"
                 style={{ borderColor: msg.agent.color, color: msg.agent.color }}
               >
-                {msg.agent.avatar}
+                {React.isValidElement(msg.agent.avatar) 
+                  ? msg.agent.avatar 
+                  : <span className="text-xl">{msg.agent.avatar}</span>
+                }
               </div>
             )}
             <div className={`max-w-xl rounded-xl ${msg.sender === 'user' ? 'bg-cyan-600 text-white' : 'bg-gray-900/70 text-gray-200 border border-gray-700'}`}>
@@ -94,7 +97,10 @@ const ChatFeed: React.FC<ChatFeedProps> = ({
                 className="w-10 h-10 rounded-full bg-gray-700/50 flex items-center justify-center flex-shrink-0 border-2"
                 style={{ borderColor: activeAgent.color, color: activeAgent.color }}
              >
-                {activeAgent?.avatar}
+                {React.isValidElement(activeAgent?.avatar) 
+                  ? activeAgent.avatar 
+                  : <span className="text-xl">{activeAgent?.avatar}</span>
+                }
               </div>
              <div className="max-w-xl p-4 rounded-xl bg-gray-900/70 text-gray-200 border border-gray-700">
                <div className="flex items-center space-x-2">

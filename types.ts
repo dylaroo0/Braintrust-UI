@@ -4,7 +4,7 @@ export interface Agent {
   id: string;
   name: string;
   role: string;
-  avatar: React.ReactElement;
+  avatar: React.ReactElement | string;
   systemInstruction: string;
   color: string;
 }
@@ -239,7 +239,6 @@ export interface MemoryAnalytics {
   completionRate: number;
   averageItemsPerDay: number;
   projectBreakdown?: { projectId: string; projectName: string; count: number }[];
-}
 }
 
 export interface Message {

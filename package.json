@@ -20,7 +20,11 @@
     "migrate:stats": "tsx scripts/migrationStats.ts",
     "migrate:verify": "tsx scripts/verifyMigration.ts",
     "extract:agents": "tsx scripts/extractCurrentAgents.ts",
-    "demo:search": "tsx scripts/demonstrateSearch.ts"
+    "demo:search": "tsx scripts/demonstrateSearch.ts",
+    "migrate:schema": "tsx scripts/migrateAgentSchema.ts",
+    "import:specialists": "tsx scripts/importAgentSpecialists.ts",
+    "setup:clean-db": "tsx scripts/setupCleanDatabase.ts",
+    "generate:agents": "node scripts/generateAgentManifest.cjs"
   },
   "dependencies": {
     "@google/genai": "^1.9.0",

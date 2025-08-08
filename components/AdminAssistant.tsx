@@ -29,7 +29,10 @@ const AdminAssistant: React.FC<AdminAssistantProps> = ({ agent, onClick, onDoubl
         onDoubleClick={() => onDoubleClick(agent)}
       >
         <div style={{ color: iconColor }} className="text-gray-400 group-hover:text-[var(--agent-color)] transition-colors duration-300 mb-1 scale-110">
-            {agent.avatar}
+            {React.isValidElement(agent.avatar) 
+              ? agent.avatar 
+              : <span className="text-2xl">{agent.avatar}</span>
+            }
         </div>
         <span className="text-sm font-bold text-gray-200">{agent.name}</span>
         <span className="text-xs text-gray-400 px-1 text-center">{agent.role}</span>

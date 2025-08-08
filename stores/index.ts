@@ -17,4 +17,8 @@ export {
   useAgentLibraryStatus,
 } from './agentLibraryStore';
 
+export {
+  useActiveAgentsStore,
+} from './activeAgentsStore';
+
 export { testMemoryStore } from './memoryStore.test';

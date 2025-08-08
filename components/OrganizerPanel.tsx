@@ -612,7 +612,10 @@ const OrganizerPanel: React.FC<OrganizerPanelProps> = ({ isOpen, onClose, agents
                   <div key={groupAgent.id}>
                     <div className="flex items-center gap-3 mb-2">
                       <div className="w-6 h-6 rounded-full bg-gray-700 flex items-center justify-center border" style={{ borderColor: groupAgent.color, color: groupAgent.color }}>
-                        {React.cloneElement(groupAgent.avatar, { className: "w-4 h-4" })}
+                        {React.isValidElement(groupAgent.avatar) 
+                          ? React.cloneElement(groupAgent.avatar, { className: "w-4 h-4" })
+                          : <span className="text-sm">{groupAgent.avatar}</span>
+                        }
                       </div>
                       <h4 className="text-sm font-semibold" style={{ color: groupAgent.color }}>{groupAgent.name}</h4>
                     </div>

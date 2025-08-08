@@ -1,0 +1,193 @@
+AI-Specialist-Agents/
+│
+├── 🎨 Creative-Content-Creation/
+│   ├── ✍️ Writing-Editing/
+│   │   ├── Academic-Tone-Writer/
+│   │   ├── Enthusiastic-Text/
+│   │   ├── Text-Editor-Emotional-Amplifier/
+│   │   ├── Formal-Writing-Generator/
+│   │   ├── Dejargonizer/
+│   │   ├── Blog-Outline-Generator/
+│   │   ├── Project-Idea-Formatter/
+│   │   ├── Idea-Notepad/
+│   │   ├── Document-My-Writing-Style/
+│   │   ├── The-Eccentrics-Thesaurus/
+│   │   ├── Writing-Prompt-Editor/
+│   │   ├── Assistant-Ideator-Writing-Editing/
+│   │   └── Technical-Writing-Questions/
+│   │
+│   ├── 🎨 Visual-Design/
+│   │   ├── Spec-Sheet-Simplifier/
+│   │   ├── UX-Streamliner/
+│   │   ├── Home-Assistant-Dashboard-Editor/
+│   │   ├── Vision-Capable-Assistant-Ideator/
+│   │   └── Start-Page-Guru/
+│   │
+│   ├── 🎵 Audio-Multimedia/
+│   │   ├── Simple-Voice-Note-Transcriber/
+│   │   ├── Voice-Transformation-Ideator/
+│   │   ├── Assistant-Ideator-Audio-Capable/
+│   │   ├── Dictation-Assistant-Ideator/
+│   │   ├── Video-Formats-Codecs/
+│   │   ├── Audio-Formats-Codecs/
+│   │   ├── Movie-Binge-Strategist/
+│   │   ├── Documentary-Finder/
+│   │   ├── If-You-Liked-This/
+│   │   └── AI-Animation-Video-Guide/
+│   │
+│   └── 🌐 Web-Digital-Design/
+│       ├── Website-Builders-Finder/
+│       ├── Web-3-0-Demystifier/
+│       ├── Swagger-Docs/
+│       ├── Docs-Wizard/
+│       └── Google-Docs-Wizard/
+│
+├── 💻 Technical-Development/
+│   ├── 🧠 AI-Development/
+│   │   ├── Agent-Assistants-How-To/
+│   │   ├── Multi-Agent-Frameworks-Guide/
+│   │   ├── Agent-Plan-Document-Generator/
+│   │   ├── Agent-Workflow-Spec-Generator/
+│   │   ├── AI-Agent-Orchestration-Assistant/
+│   │   ├── Orchestration-Agent-Manager/
+│   │   ├── Vision-Language-Models/
+│   │   ├── Local-LLM-Explainer/
+│   │   ├── LLM-Approach-Guide/
+│   │   ├── LLM-Expert/
+│   │   ├── LLM-Fine-Tune-Guide/
+│   │   ├── AI-Engineering-Expert/
+│   │   ├── Experiment-Planner-Villages/
+│   │   ├── How-To-Build-This/
+│   │   └── That-s-A-Good-AI-Question/
+│   │
+│   ├── 💻 Programming-Tools/
+│   │   ├── Script-Generation-Agent/
+│   │   ├── IDE-App-Finder/
+│   │   ├── Tech-Tool-Finder/
+│   │   ├── Is-There-A-Tech-For-That/
+│   │   ├── Writing-Editing-App-Finder/
+│   │   ├── Secrets-Parser/
+│   │   ├── PII-Filter-List-Creator/
+│   │   ├── ADB-Assistant/
+│   │   ├── Neo4j-Help/
+│   │   ├── Browser-Automation-Guide/
+│   │   ├── VOIP-Solutions-Finder/
+│   │   ├── Peripheral-Finder/
+│   │   ├── Tech-Diagnostic-Utility/
+│   │   ├── Synthetic-Data-Creation-Assistant/
+│   │   └── Documents-To-JSON/
+│   │
+│   └── 🌐 Web-Infrastructure/
+│       ├── AWS-Advisor/
+│       ├── Google-Cloud-Platform/
+│       ├── Website-Builders-Finder/
+│       ├── Web-3-0-Demystifier/
+│       ├── Swagger-Docs/
+│       ├── Browser-Use-Agents/
+│       └── Custom-Tech-Doc-Creator/
+│
+├── 📁 Organization-Productivity/
+│   ├── 🗂️ Information-Management/
+│   │   ├── Document-Workflow-Expert/
+│   │   ├── Organise-My-Folders/
+│   │   ├── File-Folder-Organisation/
+│   │   ├── Document-My-Stack/
+│   │   ├── Scope-Of-Service-Outliner-SLA/
+│   │   ├── Statement-Of-Work-Generator/
+│   │   ├── SOP-Documentation-Generator/
+│   │   ├── Technical-Documentation-Generator/
+│   │   ├── Documentation-Generator-General-Purpose/
+│   │   ├── The-Documentation-Ally/
+│   │   ├── Knowledge-Base-Documentation-Software-Finder/
+│   │   └── Awesome-List-Builder/
+│   │
+│   └── 📅 Personal-Productivity/
+│       ├── Task-Manager-Setup/
+│       ├── Morning-Email-Calendar-Summary/
+│       ├── Chore-Documentation-Generator/
+│       ├── Household-Documentation-Helper/
+│       ├── Househunting-Wishlist-Creator/
+│       ├── Automation-Workflow-Apps-Finder/
+│       ├── Streamline-My-Tech-Stack/
+│       ├── Data-Clustering-Assistant-Entity-Grouping/
+│       ├── To-Do-List-App-Finder/
+│       ├── The-Grocery-Helper/
+│       ├── Packing-List-Checker/
+│       └── Imposter-Syndrome-Ally/
+│
+├── 🏠 Home-Lifestyle/
+│   ├── 🏡 Smart-Home-Management/
+│   │   ├── Home-Assistant-Dashboard-Editor/
+│   │   ├── Home-Assistant-Entity-Organiser/
+│   │   ├── Entity-Organiser/
+│   │   ├── Home-Technology-Helper/
+│   │   └── Under-The-Hood/
+│   │
+│   └── 🌐 Household-Organization/
+│       ├── Household-Digital-Organiser/
+│       ├── Image-Analysis-Inventory-Assistant/
+│       ├── User-Manual-Image-To-Text/
+│       ├── Image-To-Text-Document-Processor/
+│       ├── Manual-Reconstructor/
+│       ├── User-Manual-Locator/
+│       ├── Storage-Solution-Ideator/
+│       ├── Storage-Recs-From-Photos/
+│       ├── The-Overly-Dogmatic-Minimalist/
+│       └── Rugged-Product-Locator/
+│
+├── 👔 Professional-Development-Career/
+│   ├── 💼 Career-Building/
+│   │   ├── Professional-Development-Navigator/
+│   │   ├── My-Ideal-Job-Documenter/
+│   │   ├── Tech-Career-Pathfinder/
+│   │   ├── Personal-Professional-Branding-Advisor/
+│   │   ├── Conference-Finder/
+│   │   ├── Job-Description-Analyst/
+│   │   ├── Outlandish-Job-Application-Ideator/
+│   │   └── AI-Assistants-For-Good/
+│   │
+│   └── 🧠 Cognitive-Support/
+│       ├── Neurodivergence-Explorer/
+│       ├── ADHD-Tech-Advisor/
+│       ├── ADHD-Treatment-News/
+│       └── Imposter-Syndrome-Ally/
+│
+├── 🔒 Security-Privacy/
+│   ├── 🔐 Data-Protection/
+│   │   ├── Secrets-Parser/
+│   │   ├── PII-Filter-List-Creator/
+│   │   ├── Encryption-Expert/
+│   │   ├── OSINT-Tools-Explorer/
+│   │   ├── Find-This-Persons-Email/
+│   │   ├── Geolocate-This-Image/
+│   │   └── NFC-Expert/
+│   │
+│   └── 🛡️ Privacy-Management/
+│       ├── Tool-Finder-Self-Hosted-Only/
+│       ├── Open-Source-Software-Finder/
+│       ├── Workspace-Browser-Advice/
+│       ├── The-Professionals-Tool-Finder/
+│       └── Tool-SaaS-Only/
+│
+└── 🧩 AI-Development-Ideation/
+    ├── 💡 Concept-Generation/
+    │   ├── Assistant-Ideator-Writing-Editing/
+    │   ├── Assistant-Ideator-Audio-Capable/
+    │   ├── Vision-Capable-Assistant-Ideator/
+    │   ├── Dictation-Assistant-Ideator/
+    │   ├── Dummy-Tech-Project-Ideator/
+    │   ├── How-To-Build-This/
+    │   ├── Creative-Naming-Assistant/
+    │   ├── Project-Name-Ideator/
+    │   └── AI-Assistants-For-Good/
+    │
+    └── 🧩 System-Design/
+        ├── Agent-Tool-Developer-Coach/
+        ├── AI-Agent-Builders/
+        ├── Local-LLM-Hardware-Assessor/
+        ├── AI-Agents-Expert/
+        ├── Tech-Product-Finder/
+        ├── Spec-Requirements-Document-Generator/
+        ├── Project-Planner/
+        ├── Tech-Project-Planner/
+        └── Technical-Documentation-Generator/

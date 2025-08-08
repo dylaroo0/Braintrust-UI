@@ -1,0 +1,48 @@
+{
+  "name": "copy-of-copy-of-braintrust-circle",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "start": "node server.js",
+    "preview": "vite preview",
+    "install:bmad": "npx bmad-method install",
+    "init:db": "tsx scripts/initDatabase.ts",
+    "test:db": "tsx scripts/testDatabase.ts",
+    "test:service": "tsx scripts/testAgentService.ts",
+    "test:service-unit": "tsx scripts/testAgentDatabaseService.ts",
+    "test:performance": "tsx scripts/performanceTest.ts",
+    "test:simple": "tsx scripts/simplePerformanceTest.ts",
+    "seed:agents": "tsx scripts/simpleSeed.ts",
+    "export:agents": "tsx scripts/exportAgents.ts",
+    "migrate:stats": "tsx scripts/migrationStats.ts",
+    "migrate:verify": "tsx scripts/verifyMigration.ts",
+    "extract:agents": "tsx scripts/extractCurrentAgents.ts",
+    "demo:search": "tsx scripts/demonstrateSearch.ts"
+  },
+  "dependencies": {
+    "@google/genai": "^1.9.0",
+    "@neodrag/react": "^2.3.1",
+    "better-sqlite3": "^12.2.0",
+    "express": "^4.21.2",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "ws": "^8.18.3",
+    "zustand": "^5.0.6"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.13",
+    "@types/node": "^22.14.0",
+    "@types/react": "^19.1.8",
+    "@types/react-dom": "^19.1.6",
+    "autoprefixer": "^10.4.20",
+    "bmad-method": "^5.0.0",
+    "postcss": "^8.4.49",
+    "tailwindcss": "^3.4.17",
+    "tsx": "^4.20.3",
+    "typescript": "~5.7.2",
+    "vite": "^6.2.0"
+  }
+}

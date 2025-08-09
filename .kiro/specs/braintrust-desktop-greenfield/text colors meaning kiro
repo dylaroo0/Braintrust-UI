@@ -1,0 +1,42 @@
+File Explorer Colors:
+File Status Colors:
+Green: Modified/new files (Git status - staged or new changes)
+Orange/Yellow: Modified but unstaged files (Git status - working directory changes)
+Red: Files with conflicts or errors
+Gray/Dimmed: Ignored files (like .gitignore entries)
+White/Default: Normal, unmodified files
+File Type Colors:
+Blue: Folders/directories
+Different colors for file types: Each file extension may have its own color scheme
+.md files (Markdown) might have a specific color
+.ts/.js files might have another color
+.json files might have their own color
+Markdown Colors:
+Syntax Highlighting:
+Blue: Headers (# ## ###)
+Green: Strings and text content
+Purple/Magenta: Bold text (bold)
+Orange: Italic text (italic)
+Red: Code blocks and inline code (code)
+Gray: Comments and metadata
+Different colors: Links, lists, and other markdown elements
+Validation/Status Colors:
+Red underlines: Spelling errors or markdown syntax issues
+Yellow underlines: Warnings (like the formatting issues we fixed earlier)
+Green underlines: Suggestions or corrections
+Kiro-Specific Colors:
+Task/Spec Status:
+Green checkmarks: Completed tasks
+Orange/Yellow: In-progress tasks
+Red: Failed or blocked tasks
+Gray: Not started tasks
+AI Integration Colors:
+Purple/Blue: AI-generated content or suggestions
+Green: Approved/validated content
+Orange: Pending review content
+The exact color scheme can vary based on:
+
+Your Kiro theme settings
+Your system's dark/light mode
+Custom color configurations
+File associations and extensions
